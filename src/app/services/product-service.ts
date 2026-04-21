@@ -32,7 +32,7 @@ export class ProductService {
   getAllProducts() {
     this.stateService.setLoading(true);
     this.http
-      .get<Product[]>(this.envFile.apiUrl)
+      .get<Product[]>(`${this.envFile.apiUrl}/products`)
       .pipe(
         catchError((error) => this.errorHandler.handleError(error)),
         finalize(() => this.stateService.setLoading(false)),
@@ -48,7 +48,7 @@ export class ProductService {
   getProductById(id: string) {
     this.stateService.setLoading(true);
     this.http
-      .get<Product>(`${this.envFile.apiUrl}/${id}`)
+      .get<Product>(`${this.envFile.apiUrl}/products/${id}`)
       .pipe(
         catchError((error) => this.errorHandler.handleError(error)),
         finalize(() => this.stateService.setLoading(false)),
