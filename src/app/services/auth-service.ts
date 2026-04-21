@@ -19,7 +19,7 @@ export class AuthService {
 
   logIn(payload: any): Observable<any> {
     return this.http
-      .post<any>('https://e-commerce-backend-nestjs-3nac.onrender.com//api/v1/auth/login', payload)
+      .post<any>('https://e-commerce-backend-nestjs-3nac.onrender.com/api/v1/auth/login', payload)
       .pipe(
         tap((response) => {
           localStorage.setItem('access_token', response.access_token);
@@ -34,7 +34,7 @@ export class AuthService {
 
   signUp(payload: any): Observable<any> {
     return this.http
-      .post<any>('https://e-commerce-backend-nestjs-3nac.onrender.com//api/v1/auth/signup', payload)
+      .post<any>('https://e-commerce-backend-nestjs-3nac.onrender.com/api/v1/auth/signup', payload)
       .pipe(
         tap((response) => {
           alert('User registration succesful, you can now login');
