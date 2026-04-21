@@ -20,7 +20,7 @@ export class AuthService {
   ) {}
 
   logIn(payload: any): Observable<any> {
-    return this.http.post<any>(`${this.env.apiUrl}/api/v1/auth/login`, payload).pipe(
+    return this.http.post<any>(`${this.env.apiUrl}/auth/login`, payload).pipe(
       tap((response) => {
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('userEmail', payload.email);
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   signUp(payload: any): Observable<any> {
-    return this.http.post<any>(`${this.env.apiUrl}/api/v1/auth/signup`, payload).pipe(
+    return this.http.post<any>(`${this.env.apiUrl}/auth/signup`, payload).pipe(
       tap((response) => {
         alert('User registration succesful, you can now login');
       }),
