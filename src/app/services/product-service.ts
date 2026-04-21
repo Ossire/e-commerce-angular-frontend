@@ -25,7 +25,7 @@ export class ProductService {
 
   createProduct(product: Product): Observable<Product> {
     return this.http
-      .post<Product>(this.envFile.apiUrl, product)
+      .post<Product>(`${this.envFile.apiUrl}/products`, product)
       .pipe(catchError((error) => this.errorHandler.handleError(error)));
   }
 
