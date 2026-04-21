@@ -18,27 +18,31 @@ export class AuthService {
   ) {}
 
   logIn(payload: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/v1/auth/login', payload).pipe(
-      tap((response) => {
-        localStorage.setItem('access_token', response.access_token);
-        localStorage.setItem('userEmail', payload.email);
-        this.isAuthenticated.next(true);
-      }),
-      catchError((error) => {
-        return this.errorService.handleError(error);
-      }),
-    );
+    return this.http
+      .post<any>('https://e-commerce-backend-nestjs-3nac.onrender.com//api/v1/auth/login', payload)
+      .pipe(
+        tap((response) => {
+          localStorage.setItem('access_token', response.access_token);
+          localStorage.setItem('userEmail', payload.email);
+          this.isAuthenticated.next(true);
+        }),
+        catchError((error) => {
+          return this.errorService.handleError(error);
+        }),
+      );
   }
 
   signUp(payload: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/v1/auth/signup', payload).pipe(
-      tap((response) => {
-        alert('User registration succesful, you can now login');
-      }),
-      catchError((error) => {
-        return this.errorService.handleError(error);
-      }),
-    );
+    return this.http
+      .post<any>('https://e-commerce-backend-nestjs-3nac.onrender.com//api/v1/auth/signup', payload)
+      .pipe(
+        tap((response) => {
+          alert('User registration succesful, you can now login');
+        }),
+        catchError((error) => {
+          return this.errorService.handleError(error);
+        }),
+      );
   }
 
   get loginStatus() {
